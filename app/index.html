@@ -1,0 +1,199 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<html lang="is">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="generator" content="Polymer Starter Kit" />
+  <title>Ferilskrá</title>
+  <!-- Place favicon.ico in the `app/` directory -->
+
+  <!-- Chrome for Android theme color -->
+  <meta name="theme-color" content="#2E3AA1">
+
+  <!-- Web Application Manifest -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Tile color for Win8 -->
+  <meta name="msapplication-TileColor" content="#3372DF">
+
+  <!-- Tile icon for Win8 (144x144) -->
+  <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild-->
+
+  <!-- build:js bower_components/webcomponentsjs/webcomponents-lite.min.js -->
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <!-- endbuild -->
+
+  <!-- will be replaced with elements/elements.vulcanized.html -->
+  <link rel="import" href="elements/elements.html">
+  <!-- endreplace-->
+
+  <!-- For shared styles, shared-styles.html import in elements.html -->
+  <style is="custom-style" include="shared-styles"></style>
+
+</head>
+
+<body unresolved class="fullbleed layout vertical">
+  <span id="browser-sync-binding"></span>
+
+  <template is="dom-bind" id="app">
+
+    <paper-drawer-panel id="paperDrawerPanel">
+      <!-- Drawer Scroll Header Panel -->
+      <paper-scroll-header-panel drawer fixed>
+
+        <!-- Drawer Toolbar -->
+        <paper-toolbar id="drawerToolbar">
+          <span class="paper-font-title">Yfirlit</span>
+        </paper-toolbar>
+
+        <!-- Drawer Content -->
+        <paper-menu class="list" attr-for-selected="data-route" selected="[[route]]">
+          <a data-route="home" href="/" on-click="onDataRouteClick">
+            <iron-icon icon="resume-icons:home"></iron-icon>
+            <span>Forsíða</span>
+          </a>
+
+          <a data-route="users" href="/users" on-click="onDataRouteClick">
+            <iron-icon icon="resume-icons:people"></iron-icon>
+            <span>Færni</span>
+          </a>
+
+          <a data-route="contact" href="/contact" on-click="onDataRouteClick">
+            <iron-icon icon="resume-icons:email"></iron-icon>
+            <span>Reynsla</span>
+          </a>
+        </paper-menu>
+      </paper-scroll-header-panel>
+
+      <!-- Main Area -->
+      <paper-scroll-header-panel main condenses keep-condensed-header>
+
+        <!-- Main Toolbar -->
+        <paper-toolbar id="mainToolbar" class="tall">
+          <paper-icon-button id="paperToggle" icon="resume-icons:menu" paper-drawer-toggle></paper-icon-button>
+          <span class="flex"></span>
+
+
+
+          <!-- Application name -->
+          <div class="middle middle-container center horizontal layout">
+            <div class="app-name">Tryggvi Gylfason</div>
+          </div>
+
+
+          <!-- Application sub title -->
+          <div class="bottom bottom-container center horizontal layout">
+            <div class="bottom-title paper-font-subhead">Ferilskrá</div>
+          </div>
+          <div class="bottom">
+            <resume-avatar role="img" aria-label="pictur of me"
+                           src="images/me/me.jpg" position="50% 0"></resume-avatar>
+          </div>
+
+        </paper-toolbar>
+
+        <!-- Main Content -->
+        <div class="content">
+          <iron-pages attr-for-selected="data-route" selected="{{route}}">
+
+            <section data-route="home" class="home">
+              <paper-material elevation="1">
+                <h2 class="page-title">Contact</h2>
+                <div class="layout horizontal center home__contact-item">
+                  <iron-icon class="home__contact-item__icon"
+                             icon="resume-icons:location-on"></iron-icon>
+                  <span>Reykjavík, Iceland</span>
+                </div>
+                <div class="layout horizontal center home__contact-item">
+                  <iron-icon class="home__contact-item__icon"
+                             icon="resume-icons:phone-android"></iron-icon>
+                  <span>+354 8498683</span>
+                </div>
+                <div class="layout horizontal center home__contact-item">
+                  <iron-icon class="home__contact-item__icon"
+                             icon="resume-icons:email"></iron-icon>
+                  <a href="mailto:tryggvigy@gmail.com">tryggvigy@gmail.com</a>
+                </div>
+                <div class="layout horizontal center home__contact-item">
+                  <iron-icon class="home__contact-item__icon"
+                             icon="resume-icons:github"></iron-icon>
+                  <a href="https://github.com/tryggvigy">github</a>
+                </div>
+                <div class="layout horizontal center home__contact-item">
+                  <iron-icon class="home__contact-item__icon"
+                             icon="resume-icons:github"></iron-icon>
+                  <a href="https://is.linkedin.com/pub/tryggvi-gylfason/90/463/806">linked-in</a>
+                </div>
+              </paper-material>
+            </section>
+
+            <section data-route="users">
+              <paper-material elevation="1">
+                <h2 class="page-title">Users</h2>
+                <p>This is the users section</p>
+                <a href="/users/Rob">Rob</a>
+              </paper-material>
+            </section>
+
+            <section data-route="user-info">
+              <paper-material elevation="1">
+                <h2 class="page-title">
+                User:<span>{{params.name}}</span>
+                </h2>
+                <div>This is <span>{{params.name}}</span>'s section</div>
+              </paper-material>
+            </section>
+
+            <section data-route="contact">
+              <paper-material elevation="1">
+                <h2 class="page-title">Contact</h2>
+                <p>This is the contact section</p>
+              </paper-material>
+            </section>
+
+          </iron-pages>
+        </div>
+      </paper-scroll-header-panel>
+    </paper-drawer-panel>
+
+    <!-- Uncomment next block to enable Service Worker support (1/2) -->
+    <!--
+    <paper-toast id="caching-complete"
+                 duration="6000"
+                 text="Caching complete! This app will work offline.">
+    </paper-toast>
+
+    <platinum-sw-register auto-register
+                          clients-claim
+                          skip-waiting
+                          on-service-worker-installed="displayInstalledToast">
+      <platinum-sw-cache default-cache-strategy="fastest"
+                         cache-config-file="cache-config.json">
+      </platinum-sw-cache>
+    </platinum-sw-register>
+    -->
+
+  </template>
+
+  <!-- build:js scripts/app.js -->
+  <script src="scripts/app.js"></script>
+  <!-- endbuild-->
+</body>
+
+</html>
