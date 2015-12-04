@@ -57,7 +57,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     // Scale middleContainer appName
     Polymer.Base.transform('scale(' + scaleMiddle + ') translateZ(0)', appName);
-    
+
     // Scale bottom avatar
     Polymer.Base.transform('scale(' + scaleMiddle + ') translateZ(0)', resumeAvatar);
   });
@@ -74,5 +74,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   app.scrollPageToTop = function() {
     document.getElementById('mainContainer').scrollTop = 0;
   };
+  app.selected = 0;
 
 })(document);

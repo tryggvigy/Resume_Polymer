@@ -1,21 +1,10 @@
 <!doctype html>
-<!--
-@license
-Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
 <html lang="is">
 
 <head>
   <meta charset="utf-8">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="generator" content="Polymer Starter Kit" />
   <title>Ferilskrá</title>
   <!-- Place favicon.ico in the `app/` directory -->
 
@@ -23,7 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <meta name="theme-color" content="#2E3AA1">
 
   <!-- Web Application Manifest -->
-  <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="manifest.json" async>
 
   <!-- Tile color for Win8 -->
   <meta name="msapplication-TileColor" content="#3372DF">
@@ -39,16 +28,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
   <!-- endbuild -->
 
+  <!-- For shared styles, shared-styles.html import in elements.html -->
+  <style is="custom-style" include="shared-styles"></style>
+
   <!-- will be replaced with elements/elements.vulcanized.html -->
   <link rel="import" href="elements/elements.html">
   <!-- endreplace-->
 
-  <!-- For shared styles, shared-styles.html import in elements.html -->
-  <style is="custom-style" include="shared-styles"></style>
 
 </head>
 
-<body unresolved class="fullbleed layout vertical">
+<body class="fullbleed layout vertical">
   <span id="browser-sync-binding"></span>
 
   <template is="dom-bind" id="app">
@@ -64,18 +54,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <!-- Drawer Content -->
         <paper-menu class="list" attr-for-selected="data-route" selected="[[route]]">
-          <a data-route="home" href="/" on-click="onDataRouteClick">
+          <a data-route="home" href="/home" on-click="onDataRouteClick">
             <iron-icon icon="resume-icons:home"></iron-icon>
             <span>Forsíða</span>
           </a>
 
-          <a data-route="users" href="/users" on-click="onDataRouteClick">
-            <iron-icon icon="resume-icons:people"></iron-icon>
+          <a data-route="skills" href="/skills" on-click="onDataRouteClick">
+            <iron-icon icon="resume-icons:poll"></iron-icon>
             <span>Færni</span>
           </a>
 
-          <a data-route="contact" href="/contact" on-click="onDataRouteClick">
-            <iron-icon icon="resume-icons:email"></iron-icon>
+          <a data-route="experience" href="/experience" on-click="onDataRouteClick">
+            <iron-icon icon="resume-icons:people"></iron-icon>
             <span>Reynsla</span>
           </a>
         </paper-menu>
@@ -143,28 +133,47 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               </paper-material>
             </section>
 
-            <section data-route="users">
+            <section data-route="skills">
               <paper-material elevation="1">
-                <h2 class="page-title">Users</h2>
-                <p>This is the users section</p>
-                <a href="/users/Rob">Rob</a>
+
               </paper-material>
             </section>
 
-            <section data-route="user-info">
-              <paper-material elevation="1">
-                <h2 class="page-title">
-                User:<span>{{params.name}}</span>
-                </h2>
-                <div>This is <span>{{params.name}}</span>'s section</div>
-              </paper-material>
-            </section>
-
-            <section data-route="contact">
-              <paper-material elevation="1">
-                <h2 class="page-title">Contact</h2>
-                <p>This is the contact section</p>
-              </paper-material>
+            <section data-route="experience" class="contact">
+              <!-- <h2 class="paper-font-display1">Starfsreynsla</h2> -->
+              <exp-item>
+                <h3 class="contact__item__heading">Dæmatímakennari – Vefforritun</h3>
+                <span class="paper-font-body1 contact__item__date">2014-2015</span>
+                <p>Dæmatímakennsla við Háskóla Íslands í áfanganum
+                  <a href="https://ugla.hi.is/kennsluskra/index.php?tab=nam&chapter=namskeid&id=08715320156&namskra=0">
+                    TÖL306G Vefforritun</a> seinustu tvö ár.</p>
+              </exp-item>
+              <exp-item>
+                <h3 class="contact__item__heading">Forritari - Advania</h3>
+                <span class="paper-font-body1 contact__item__date">2015</span>
+                <p>Vann í deildinni veflausnir sem forritari.</p>
+                <p>Útfærði framenda margra vefsíður skv. hönnun, vann í </p>
+                <p>Sérstök áherðsla lögð á aðgengismál, hraða vefsíða og viðhaldanlegan kóða.</p>
+              </exp-item>
+              <exp-item>
+                <h3 class="contact__item__heading">Sumarstarf - Marel</h3>
+                <span class="paper-font-body1 contact__item__date">2014</span>
+                <p>Þróun, hönnun og skjölun debugging/monitoring tóla fyrir
+                   matvinnsluvélar.</p>
+                <p>Hönnun snertiskjás viðmót fyrir matvinnsluvélar samkvæmt style-guide</p>
+                <p>AngularJS, D3, websocket, unit-testing, Scrum og Agile.</p>
+              </exp-item>
+              <exp-item>
+                <h3 class="contact__item__heading">Sumarstarf - Norðurál</h3>
+                <span class="paper-font-body1 contact__item__date">2013</span>
+                <p>Ýmis sysadmin störf, vakt á ticket system (spicework), uppsetning véla.</p>
+                <p>Þróun gagnagrunnslausnar fyrir upplýsingar um vélar fyrirtækisins.</p>
+              </exp-item>
+              <exp-item>
+                <h3 class="contact__item__heading">Kennslustjóri - Nóbel námsbúðir</h3>
+                <span class="paper-font-body1 contact__item__date">2012-2013</span>
+                <p>Kenndi prófbúðir í eðlisfræði og stærðfræði fyrir nemendum í Kvennaskólanum í tvö ár.</p>
+              </exp-item>
             </section>
 
           </iron-pages>
